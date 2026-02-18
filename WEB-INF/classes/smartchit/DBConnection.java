@@ -1,4 +1,5 @@
 package smartchit;
+
 import java.sql.*;
 
 public class DBConnection {
@@ -7,11 +8,16 @@ public class DBConnection {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        return DriverManager.getConnection(
-            "jdbc:mysql://127.0.0.1:3306/smartchit?useSSL=false&serverTimezone=UTC",
-            "root",
-            "neha2004"
-        );
+        String host = System.getenv("MYSQLHOST");
+        String port = System.getenv("MYSQLPORT");
+        String database = System.getenv("MYSQLDATABASE");
+        String user = System.getenv("MYSQLUSER");
+        String password = System.getenv("MYSQLPASSWORD");
+
+        String url = "jdbc:mysql://" + host + ":" + port + "/" + database +
+                "?useSSL=false&serverTimezone=UTC";
+
+        return DriverManager.getConnection(url, user, password);
     }
 }
 
