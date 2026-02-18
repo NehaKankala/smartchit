@@ -1,0 +1,56 @@
+<web-app>
+
+<servlet>
+<servlet-name>AdminLoginServlet</servlet-name>
+<servlet-class>smartchit.AdminLoginServlet</servlet-class>
+
+</servlet>
+
+<servlet-mapping>
+<servlet-name>AdminLoginServlet</servlet-name>
+<url-pattern>/AdminLoginServlet</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+<servlet-name>AddChitServlet</servlet-name>
+<servlet-class>smartchit.AddChitServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>AddChitServlet</servlet-name>
+<url-pattern>/AddChitServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>AddMemberServlet</servlet-name>
+<servlet-class>smartchit.AddMemberServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>AddMemberServlet</servlet-name>
+<url-pattern>/AddMemberServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>PaymentServlet</servlet-name>
+<servlet-class>smartchit.PaymentServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>PaymentServlet</servlet-name>
+<url-pattern>/PaymentServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>UpdateMemberDetailsServlet</servlet-name>
+    <servlet-class>smartchit.UpdateMemberDetailsServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>UpdateMemberDetailsServlet</servlet-name>
+    <url-pattern>/UpdateMemberDetailsServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>
+
