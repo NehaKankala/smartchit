@@ -1,23 +1,19 @@
-package smartchit;
+FROM tomcat:9.0-jdk17
 
-import java.sql.*;
+# Remove default ROOT app
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-public class DBConnection {
+# Copy your project into ROOT
+COPY . /usr/local/tomcat/webapps/ROOT
 
-    public static Connection getConnection() throws Exception {
+# Install wget
+RUN apt-get update && apt-get install -y wget
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
+# Download MySQL Connector JAR directly (recommended way)
+RUN wget https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.6.0/mysql-connector-j-9.6.0.jar \
+    -O /usr/local/tomcat/lib/mysql-connector-j.jar
 
-        String host = System.getenv("MYSQLHOST");
-        String port = System.getenv("MYSQLPORT");
-        String database = System.getenv("MYSQLDATABASE");
-        String user = System.getenv("MYSQLUSER");
-        String password = System.getenv("MYSQLPASSWORD");
+EXPOSE 8080
 
-        String url = "jdbc:mysql://" + host + ":" + port + "/" + database +
-                "?useSSL=false&serverTimezone=UTC";
-
-        return DriverManager.getConnection(url, user, password);
-    }
-}
+CMD ["catalina.sh", "run"]
 
